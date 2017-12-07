@@ -18,6 +18,18 @@
   <!-- Need an array of words, keystroke events. If key is pressed that matches selected word in array, put in blank space. If not, eliminate choice  -->
 
   <script type="text/javascript">
+    
+    var sample = ["SAMPLE", "HODGE", "STING", "CHAMPION", "STRATOCASTER"];
+
+    var word = sample[Math.floor(Math.random()*words.length)];
+
+    var answer = [];
+      for (var i = 0; i < word.length; i++) {
+        answer[i] = "_ ";
+      }
+
+      var remainingLetters = word.length;
+
 
   </script>
 </body>
