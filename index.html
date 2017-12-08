@@ -4,10 +4,14 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <title>Hangman!</title>
-    <h1>Hangman!</h1>
 </head>
 <body>
-  <h2>Press any key to get started!</h2>
+<div class="jumbotron">
+  <h1 class="display-3">Hangman!</h1>
+  <p class="lead">Press any key to get started!</p>
+
+  <div class="container" id="game-space">
+  </div>
 
   <h3>Wins:</h3>
 
@@ -15,21 +19,28 @@
 
   <h3>Letters Already Guessed</h3>
 
-  <!-- Need an array of words, keystroke events. If key is pressed that matches selected word in array, put in blank space. If not, eliminate choice  -->
+  <!-- I need to pick a random word - function from array
+  I need the random word to be displayed as blank spaces
+  I need the user to select a letter by typing key - keystroke listener
+  If the letter is in the random word, it needs to populate the corresponding blank space, if not the letter should go into the "already guessed" section
+  Each time a letter is chosen, the number of guesses needs to decrease by 1
+  When the user win/loses, the program should start again with a new word - for-loop?  -->
 
   <script type="text/javascript">
-    
-    var sample = ["SAMPLE", "HODGE", "STING", "CHAMPION", "STRATOCASTER"];
+    // Establishes words and random selection
+    const sample = ["SAMPLE", "HODGE", "STING", "CHAMPION", "STRATOCASTER"];
 
-    var word = sample[Math.floor(Math.random()*words.length)];
+    let word = sample[Math.floor(Math.random()*sample.length)];
 
-    var answer = [];
-      for (var i = 0; i < word.length; i++) {
+    let answer = [];
+      for (let i = 0; i < word.length; i++) {
         answer[i] = "_ ";
-      }
-
-      var remainingLetters = word.length;
-
+        document.querySelector("#game-space").innerHTML = answer;
+      }      
+    
+      let remainingLetters = word.length;
+      
+    // Player interaction
 
   </script>
 </body>
