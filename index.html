@@ -28,8 +28,10 @@
 
   <script type="text/javascript">
     // Establishes words and random selection
-    const sample = ["SAMPLE", "HODGE", "STING", "CHAMPION", "STRATOCASTER"];
-
+    
+    const sample = [
+      ["S", "A", "M", "P", "L", "E"], ["H", "O", "D", "G", "E"], ["S", "T", "I", "N", "G"], ["C", "H", "A", "M", "P", "I", "O", "N"], ["S", "T", "R", "A", "T", "O", "C", "A", "S", "T", "E", "R"]
+    ];
     let word = sample[Math.floor(Math.random()*sample.length)];
 
     let answer = [];
@@ -41,6 +43,21 @@
       let remainingLetters = word.length;
       
     // Player interaction
+
+    const guess = document.querySelector("#game-space");
+
+    document.addEventListener("keyup", function(event) {
+      guess.textContent = event.key;
+
+      function playerGuessCheck(){
+      let playerGuess = []
+      
+      for (let a = 'a'.charAt(0); a <= 'z'.charAt(0); a++)
+        answer.push(String.fromCharCode(a));    }
+    });
+
+
+
 
   </script>
 </body>
