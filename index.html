@@ -31,7 +31,7 @@
   <script type="text/javascript">
     
     // Establishes avaiable words for game
-  // function resetGame() {
+  function resetGame() {
     const sample = ["sample", "hodge", "sting", "champion", "stratocaster"];
     
     // Selects random word from array
@@ -39,37 +39,42 @@
     let word = sample[Math.floor(Math.random()*sample.length)];
     console.log(word);
 
-    // Replaces letter in array with blank spaces
-    const answer = []
+    // // Replaces letter in array with blank spaces
+    const answer = word.split("")
     console.log(answer);
 
     // Show amount of blank spaces left as game goes on
     let remainingLetters = word.length;
     console.log(remainingLetters);       
 
+    let newArray = []
     for (let i = 0; i < remainingLetters; i++) {
-    answer.push("_ ");
-    }     
+    newArray.push("_ ");
+    }
 
-    document.querySelector("#game-space").innerHTML = answer.join(' ');
+
+    document.querySelector("#game-space").innerHTML = newArray.join(' ');
 
     let lives = 10;
       
     // Player interaction
 
+    let correctArray = []
+
     const guess = document.addEventListener("keyup", function(event) {
       console.log(event);
-    for (let a = 0; a <= answer.length; a++) {
-    if (answer[a] === event.key) {
-        answer[a] = event.key;
-        answer.push(event.key);
-        remainingLetters--;
-        document.querySelector("#game-space").innerHTML = answer.join(' ');
-      }
-    };
+      for (let a = 0; a < remainingLetters; a++) {
+        if (answer[a] === event.key) {
+          for(let x = 0; x < remainingLetters; x++) {
+            }
+          }
+        document.querySelector("#game-space").innerHTML = correctArray.join(' ');
+        }
+      
+    }
   });
-
-  // resetGame();
+  }  
+  resetGame();
 
   </script>
 </body>
