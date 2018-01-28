@@ -153,9 +153,15 @@ const hangmanGame = {
 			this.wins = this.wins + 1;
 			document.querySelector("#wins").innerHTML = this.wins;
 			document.querySelector("#sound").innerHTML = this.musicalInstruments[this.wordInPlay].sound;
-			document.querySelector("#picture").innerHTML = "<img class='instrument-img' src='images/'" + this.wordsToPick[this.wordInPlay].picture + "' alt='" + this.wordsToPick[this.wordInPlay].sound + "'>";
+			document.querySelector("#picture").innerHTML = "<img class='instrument-img' src='images/'" + this.musicalInstruments[this.wordInPlay].picture + "' alt='" + this.wordsToPick[this.wordInPlay].sound + "'>";
 
-			
+		let audio = new Audio(this.musicalInstruments[this.wordInPlay].sound);
+		audio.play();
+
+		return true;
 		}
+	return false;
 	}
-}
+};
+
+hangmanGame.startGame();
