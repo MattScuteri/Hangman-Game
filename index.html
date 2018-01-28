@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script type="text/javascript" src="assets/javascript/script.js"></script>
   <title>Hangman!</title>
 </head>
 <body>
@@ -13,13 +14,23 @@
   <div class="container" id="game-space">
   </div>
 
+  <div class="container" id="sound">
+  </div>
+
+  <div class="container" id="picture">
+  </div>
+
   <h3>Wins:</h3>
+  <div class="container" id="wins">
+  </div>
 
   <h3>Number of guesses remaining:</h3>
-  <div class="container" id="wrong-letters">
+  <div class="container" id="num-guesses">
   </div>
 
   <h3>Letters Already Guessed</h3>
+  <div class="container" id="wrong-letters">
+  </div>
 
   <!-- I need to pick a random word - function from array
   I need the random word to be displayed as blank spaces
@@ -27,54 +38,6 @@
   If the letter is in the random word, it needs to populate the corresponding blank space, if not the letter should go into the "already guessed" section
   Each time a letter is chosen, the number of guesses needs to decrease by 1
   When the user win/loses, the program should start again with a new word - for-loop?  -->
-
-  <script type="text/javascript">
-    
-    // Establishes avaiable words for game
-  function resetGame() {
-    const sample = ["sample", "hodge", "sting", "champion", "stratocaster"];
-    
-    // Selects random word from array
-
-    let word = sample[Math.floor(Math.random()*sample.length)];
-    console.log(word);
-
-    // // Replaces letter in array with blank spaces
-    const answer = word.split("")
-    console.log(answer);
-
-    // Show amount of blank spaces left as game goes on
-    let remainingLetters = word.length;
-    console.log(remainingLetters);       
-
-    let newArray = []
-    for (let i = 0; i < remainingLetters; i++) {
-    newArray.push("_ ");
-    }
-
-
-    document.querySelector("#game-space").innerHTML = newArray.join(' ');
-
-    let lives = 10;
-      
-    // Player interaction
-
-    let correctArray = []
-
-    const guess = document.addEventListener("keyup", function(event) {
-      console.log(event);
-      for (let a = 0; a < remainingLetters; a++) {
-        if (answer[a] === event.key) {
-          for(let x = 0; x < remainingLetters; x++) {
-            }
-          }
-        document.querySelector("#game-space").innerHTML = correctArray.join(' ');
-        }
-      
-    });
-  };
-
-  resetGame();
 
   </script>
 </body>
