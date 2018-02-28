@@ -2,55 +2,45 @@ const hangmanGame = {
 
 	musicalInstruments: {
 		guitar: {
-			image:
-			sound:
-		}
+			image: "guitar.png"
+		},
 
 		piano: {
-			image:
-			sound:
-		}
+			image: "piano.jpg"
+		},
 
 		bass: {
-			image:
-			sound:
-		}
+			image: "bass.jpg"
+		},
 
 		saxophone: {
-			image:
-			sound:
-		}
+			image: "saxophone.jpg"
+		},
 
 		trumpet: {
-			image:
-			sound:
-		}
+			image: "trumpet.jpg"
+		},
 
 		sitar: {
-			image:
-			sound:
-		}
+			image: "sitar.jpg"
+		},
 
 		theremin: {
-			image:
-			sound:
-		}
+			image: "theremin.jpg"
+		},
 
 		oud: {
-			image:
-			sound:
-		}
+			image: "oud.jpg"
+		},
 
 		triangle: {
-			image:
-			sound:
-		}
+			image: "triangle.jpg"
+		},
 
 		trombone: {
-			image:
-			sound:
+			image: "trombone.jpg"
 		}
-	};
+	},
 
 	wordInPlay: null,
 	wordLetters: [],
@@ -78,13 +68,13 @@ const hangmanGame = {
 			this.rebuildWordView();
 
 			if (this.updateWins() === true) {
-				this.restartGame():
+				this.restartGame();
 			}
 		}
 	},
 
 	updateGuesses: function(letter) {
-		if ((this.guessedLetters.indexOf(letter) === -1) && (this.lettersOfTheWord.indexOf(letter) === -1)) {
+		if ((this.guessedLetters.indexOf(letter) === -1) && (this.wordLetters.indexOf(letter) === -1)) {
 			this.guessedLetters.push(letter);
 			this.guessedLetters--;
 
@@ -101,8 +91,8 @@ const hangmanGame = {
 	},
 
 	updateMatchedLetters: function(letter) {
-		for (let i = 0; i < this.lettersOfTheWord.length; i++) {
-			if ((letter === this.lettersOfTheWord[i]) && (this.matchedLetters.indexOf(letter) === -1)) {
+		for (let i = 0; i < this.wordLetters.length; i++) {
+			if ((letter === this.wordLetters[i]) && (this.matchedLetters.indexOf(letter) === -1)) {
 				this.matchedLetters.push(letter);
 			}
 		}
@@ -110,16 +100,16 @@ const hangmanGame = {
 
 	rebuildWordView: function() {
 		let wordView = "";
-		for (let i = 0; i < this.lettersOfTheWord.length; i++) {
-			if (this.matchedLetters.indexOf(this.lettersOfTheWord[i]) !== -1) {
-				wordView += this.lettersOfTheWord[i];
+		for (let i = 0; i < this.wordLetters.length; i++) {
+			if (this.matchedLetters.indexOf(this.wordLetters[i]) !== -1) {
+				wordView += this.wordLetters[i];
 			} else {
 				wordView += "&nnsp;_&nbsp;";
 			}
 		}
 
-		document.querySelector('#game-space').innerHTML = wordview;
-	}
+		document.querySelector('#game-space').innerHTML = wordView;
+	},
 
 	restartGame: function() {
 		document.querySelector("#wrong-letters").innerHTML = "";
@@ -143,8 +133,8 @@ const hangmanGame = {
 			win = true;
 		}
 
-		for (let i = 0; i < this.lettersOfTheWord.length; i++) {
-			if (this.matchedLetters.indexOf(this.lettersOfTheWord[i]) === -1) {
+		for (let i = 0; i < this.wordLetters.length; i++) {
+			if (this.matchedLetters.indexOf(this.wordLetters[i]) === -1) {
 				win = false;
 			}
 		}
@@ -152,11 +142,7 @@ const hangmanGame = {
 		if (win) {
 			this.wins = this.wins + 1;
 			document.querySelector("#wins").innerHTML = this.wins;
-			document.querySelector("#sound").innerHTML = this.musicalInstruments[this.wordInPlay].sound;
 			document.querySelector("#picture").innerHTML = "<img class='instrument-img' src='images/'" + this.musicalInstruments[this.wordInPlay].picture + "' alt='" + this.wordsToPick[this.wordInPlay].sound + "'>";
-
-		let audio = new Audio(this.musicalInstruments[this.wordInPlay].sound);
-		audio.play();
 
 		return true;
 		}
